@@ -17,15 +17,6 @@
 #endif
 #include "tmstr.h"
 
-#define E(e__test) do { \
-  err_t *e__err = (e__test); \
-  if (e__err != ERR_OK) { \
-    printf("ERROR [%s:%d]: '%s' returned error\n", __FILE__, __LINE__, #e__test); \
-    ERR_ABRT_ON_ERR(e__err, stdout); \
-    exit(1); \
-  } \
-} while (0)
-
 #define ASSRT(assrt__cond) do { \
   if (! (assrt__cond)) { \
     printf("ERROR [%s:%d]: assert '%s' failed\n", __FILE__, __LINE__, #assrt__cond); \
@@ -76,11 +67,17 @@ void parse_cmdline(int argc, char **argv) {
 
 
 void test1() {
-  char buf[26];
+  char *buf = NULL;
 
   printf("tmstr: '%s'\n", tmstr());
-  printf("tmstr_r: '%s'\n", tmstr_r(buf, sizeof(buf)));
-  printf("tmstr_r with error: '%s'\n", tmstr_r(buf, 25));
+
+  size_t buf_len = tmstr_set_fmt(tmstr_default_format);
+  buf = (char *)malloc(buf_len);
+  printf("tmstr_r: '%s'\n", tmstr_r(buf, buf_len));
+  printf("tmstr_r with error: '%s'\n", tmstr_r(buf, 4));  /* Too small. */
+
+  buf_len = tmstr_set_fmt(tmstr_sortable_format);
+  printf("tmstr sortable: '%s'\n", tmstr());
 }  /* test1 */
 
 

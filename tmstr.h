@@ -16,8 +16,13 @@
 extern "C" {
 #endif
 
+extern const char tmstr_error_msg[];
+extern const char tmstr_default_format[];
+extern const char tmstr_sortable_format[];
 const char *tmstr(void);
 const char *tmstr_r(char *buf, size_t buflen);
+char *tmstr_strdup(const char *str);
+size_t tmstr_set_fmt(const char *fmt_str);
 
 #ifdef __cplusplus
 }
