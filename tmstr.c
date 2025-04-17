@@ -1,6 +1,6 @@
 /* tmstr.c - simple timestamp string. */
 /*
-# This code and its documentation is Copyright 2024-2024 Steven Ford, http://geeky-boy.com
+# This code and its documentation is Copyright 2025-2025 Steven Ford, http://geeky-boy.com
 # and licensed "public domain" style under Creative Commons "CC0": http://creativecommons.org/publicdomain/zero/1.0/
 # To the extent possible under law, the contributors to this project have
 # waived all copyright and related or neighboring rights to this work.
